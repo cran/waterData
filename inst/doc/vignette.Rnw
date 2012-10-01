@@ -1,0 +1,1 @@
+%\VignetteIndexEntry{User vignette}\documentclass{article}\begin{document}\end{document}
