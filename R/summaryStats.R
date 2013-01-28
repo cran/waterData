@@ -34,17 +34,21 @@
 #' head(badDataSet)
 #' cleanUp(badDataSet, task="view")
 #' q05054000Fix <- cleanUp(badDataSet, task="fix")
+#' # replace 0s with NA, then one could use the fillMiss function
+#' # to estimate values
+#' q05054000Fix2 <- cleanUp(badDataSet, task="fix", replace=NA)
 #' summary(badDataSet)
 #' summary(q05054000Fix)
+#' summary(q05054000Fix2)
 cleanUp <- function(dataset, task="view", replace=0.1) {
-  if (replace < 0) {
+  if (replace < 0 & !is.na(replace) ) {
     stop("The value of replace must be greater than or equal to 0.")
   }
-  if (replace > 10) {
+  if (replace > 10 & !is.na(replace) ) {
     stop("The value of replace must be less than 10.")
   }
   pck <- dataset$val < 0 & !is.na(dataset$val)
-  dataset[pck,]
+  # dataset[pck,]
   pck2 <- dataset$val == 0 & !is.na(dataset$val)
   if (task == "view") {
     list(dataset[pck,], dataset[pck2,])

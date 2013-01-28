@@ -75,7 +75,7 @@ qualcode \tab factor \tab Qualification code
   (U.S. Geological Survey, 2012d).
 }
 \examples{
-\dontrun{
+ \dontrun{
 # import mean daily streamflow for Red River of the North at Fargo, ND
 q05054000 <- importDVs("05054000", sdate="2000-01-01", edate="2010-12-31")
 head(q05054000)
@@ -95,7 +95,7 @@ attributes(pH05054000)[c("code","stat")]
 do05054000 <- importDVs("05054000", code="00300", sdate="2000-01-01", edate="2010-12-31")
 # import mean daily turbidity for Red River of the North at Fargo, ND
 turb05054000 <- importDVs("05054000", code="63680", sdate="2000-01-01", edate="2010-12-31")
-}
+ }
 }
 \references{
   U.S. Geological Survey, 2012a, National Water Information

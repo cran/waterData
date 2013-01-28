@@ -36,6 +36,10 @@
 #' including using nearby gages to estimate missing values at a streamgage.  
 #' Additional methods for filling in missing hydrological data are summarized 
 #' in Beauchamp and others (1989) and Elshorbagy and others (2000).
+#' 
+#' To indicate which values have been replaced, the qualcode field is
+#' populated with 'fM' for those values that were estimated using the
+#' fillMiss function.
 #' @export
 #' @seealso \link{StructTS}, \link{tsSmooth}, \link{cleanUp}
 #' @format The returned data frame has the following columns: \cr
@@ -102,6 +106,12 @@ fillMiss <- function(dataset, block=30, pmiss=40, model="trend",
     leg.txt<-c("Observed values", "New time series")
     legend("topleft", leg.txt, col=c("black","green"), lwd=c(4,1), bty="n",
            ncol=2, cex=0.8)
+    dataset$val[pck] <- fit[pck,1]
+    lng <- length(grep("fM", levels(dataset$qualcode)))
+    if ( lng < 1 ) {
+      dataset$qualcode <- factor(dataset$qualcode, levels=c(levels(dataset$qualcode), 'fM')) 
+    }
+    dataset$qualcode[pck] <- "fM"
     if (!is.null(attributes(dataset)$stat) & 
       !is.null(attributes(dataset)$code)) {
       subtext <- paste("Parameter code", attributes(dataset)$code, 

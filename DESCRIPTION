@@ -1,6 +1,6 @@
 Package: waterData
-Version: 1.0
-Date: 2012-10-01
+Version: 1.0.1
+Date: 2013-01-28
 Title: An R Package for Retrieval, Analysis, and Anomaly Calculation of
         Daily Hydrologic Time Series Data
 Author: Karen R. Ryberg and Aldo V. Vecchia
@@ -17,6 +17,6 @@ Suggests: xtable, maps, mapdata
 URL: http://pubs.usgs.gov/of/2012/1168/
 Collate: 'waterData-package.R' 'importDVs.R' 'fillMiss.R'
         'summaryStats.R' 'compAnom.R' 'plotAnoms.R'
-Packaged: 2012-10-04 15:17:20 UTC; kryberg
+Packaged: 2013-01-28 23:28:20 UTC; kryberg
 Repository: CRAN
-Date/Publication: 2012-10-04 16:52:59
+Date/Publication: 2013-01-29 07:27:27

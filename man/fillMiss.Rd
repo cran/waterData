@@ -71,16 +71,21 @@ qualcode \tab factor \tab Qualification code
   values at a streamgage. Additional methods for filling in
   missing hydrological data are summarized in Beauchamp and
   others (1989) and Elshorbagy and others (2000).
+
+  To indicate which values have been replaced, the qualcode
+  field is populated with 'fM' for those values that were
+  estimated using the fillMiss function.
 }
 \examples{
 data(exampleWaterData)
 my.newdata <- fillMiss(misQ05054000, block=30, pmiss=50, log="y")
+summary(misQ05054000)
+summary(my.newdata)
  \dontrun{
-  # ph example
-  pH05082500<-importDVs("05082500", code="00400", stat="00008", 
-  sdate="2000-01-01", edate="2011-12-31")
-  plotParam(pH05082500)
-  pHfilled<-fillMiss(pH05082500, block=45, ylim=c(7.5,9), yaxs="i")
+# ph example
+pH05082500<-importDVs("05082500", code="00400", stat="00008", sdate="2000-01-01", edate="2011-12-31")
+plotParam(pH05082500)
+pHfilled<-fillMiss(pH05082500, block=45, ylim=c(7.5,9), yaxs="i")
  }
 }
 \references{
@@ -103,9 +108,9 @@ my.newdata <- fillMiss(misQ05054000, block=30, pmiss=50, log="y")
 \seealso{
   \link{StructTS}, \link{tsSmooth}, \link{cleanUp}
 }
-\keyword{NA}
 \keyword{datagen}
 \keyword{hplot}
+\keyword{NA}
 \keyword{smooth}
 \keyword{ts}
 
