@@ -55,12 +55,12 @@
 }
 \examples{
  \dontrun{
-  q05054000.85 <- importDVs("05054000", sdate="1985-10-01", edate="2010-09-30")
-  anoms05054000.1 <- compAnom(q05054000.85, which=1)
-  anoms05054000.2 <- compAnom(q05054000.85, which=2)
-  anoms05054000.3 <- compAnom(q05054000.85, which=3)
-  anoms05054000.4 <- compAnom(q05054000.85, which=4)
- }
+    q05054000.85 <- importDVs("05054000", sdate="1985-10-01", edate="2010-09-30")
+    anoms05054000.1 <- compAnom(q05054000.85, which=1)
+    anoms05054000.2 <- compAnom(q05054000.85, which=2)
+    anoms05054000.3 <- compAnom(q05054000.85, which=3)
+    anoms05054000.4 <- compAnom(q05054000.85, which=4)
+  }
 }
 \references{
   Alexander, R.B. and Smith, R.A., 2006, Trends in the
