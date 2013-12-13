@@ -87,7 +87,8 @@ sc05082500<- importDVs("05082500", code="00095", sdate="2000-01-01", edate="2010
 # import mean daily water temperature for Red River of the North at Fargo, ND
 temp05054000<- importDVs("05054000", code="00010", sdate="2000-01-01", edate="2010-12-31")
 # import median daily pH for Red River of the North at Fargo, ND
-pH05054000<- importDVs("05054000", code="00400", stat="00008", sdate="2000-01-01", edate="2010-12-31")
+pH05054000<- importDVs("05054000", code="00400", stat="00008",
+sdate="2000-01-01", edate="2010-12-31")
 # examine the attributes of the data frame to show that the parameter code
 # and statistics code are saved with the data frame
 attributes(pH05054000)[c("code","stat")]

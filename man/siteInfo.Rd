@@ -50,12 +50,14 @@ lng \tab numeric \tab Decimal longitude
   vignette.
 }
 \examples{
+ \dontrun{
 staInfo <- siteInfo("05054000")
 staInfo
 staInfo <- siteInfo(c("05054000", "05082500", "06342500"))
 staInfo
 # a list with an invalid station identification number
 staInfo <- siteInfo(c("05054000", "05082500", "06342501"))
+  }
 }
 \references{
   U.S. Geological Survey, 2012a, National Water Information

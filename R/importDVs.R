@@ -90,7 +90,8 @@
 #' # import mean daily water temperature for Red River of the North at Fargo, ND
 #' temp05054000<- importDVs("05054000", code="00010", sdate="2000-01-01", edate="2010-12-31")
 #' # import median daily pH for Red River of the North at Fargo, ND
-#' pH05054000<- importDVs("05054000", code="00400", stat="00008", sdate="2000-01-01", edate="2010-12-31")
+#' pH05054000<- importDVs("05054000", code="00400", stat="00008", 
+#' sdate="2000-01-01", edate="2010-12-31")
 #' # examine the attributes of the data frame to show that the parameter code 
 #' # and statistics code are saved with the data frame
 #' attributes(pH05054000)[c("code","stat")]
@@ -100,7 +101,6 @@
 #' turb05054000 <- importDVs("05054000", code="63680", sdate="2000-01-01", edate="2010-12-31")
 importDVs <- function(staid, code="00060", stat="00003", sdate="1851-01-01", 
                       edate=as.Date(Sys.Date(), format="%Y-%m-%d")) {
-  require(XML)
   if (is.character(staid) == FALSE ) stop("staid needs to have quotes around it")
   if (nchar(staid) < 8) stop ("staid must be at least 8 characters")
   base_url <- "http://waterservices.usgs.gov/nwis/dv?"
@@ -190,8 +190,6 @@ importDVs <- function(staid, code="00060", stat="00003", sdate="1851-01-01",
 #' stat=attributes(misQ05054000)$stat, logscale=TRUE)
 #' @keywords hplot ts univar
 plotParam<-function(data, logscale=FALSE, metric=FALSE, ylabel=NULL, ...) {
-  require(lattice)
-  require(latticeExtra)
   if (missing(ylabel) ) {
     if ( is.null(attributes(data)$stat) | is.null(attributes(data)$code) ) {
       stop("The data frame needs to have either stat and code attributes or 
@@ -455,7 +453,6 @@ tellMeURL <- function(staid, code="00060", stat="00003", sdate="1851-01-01",
 #' # a list with an invalid station identification number
 #' staInfo <- siteInfo(c("05054000", "05082500", "06342501"))
 siteInfo<-function(staid) {
-  require(XML)
   staname <- vector(mode="character", length=0)
   lat <- vector(mode="numeric", length=0)
   lng <- vector(mode="numeric", length=0)
