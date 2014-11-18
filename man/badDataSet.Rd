@@ -31,7 +31,7 @@
   \tabular{lll}{
    Name \tab Type \tab Description \cr 
    staid \tab factor \tab USGS Station identification number \cr
-   val \tab numberic \tab Daily mean streamflow \cr
+   val \tab numeric \tab Daily mean streamflow \cr
    dates \tab Date \tab Date of daily mean \cr
    qualcode \tab factor \tab Qualification code
   }
