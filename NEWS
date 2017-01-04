@@ -1,12 +1,17 @@
+Version 1.0.5
+*************
+Updated all USGS urls to https.
+
 Version 1.0.4
 *************
 Fixed code that was causing an error in the Vignette.
-Changed depends list to imports for additional packages used by
+Changed depends list to imports for additional packages used by 
 some of the functions.
-Added a more descriptive error message for long-term anomaly
+Added a more descriptive error message for long-term anomaly 
 calculation attempt on datasets that are too short.
 
 Version 1.0.3
+*************
 Fixed incomplete plot title in plotAnoms when which parameter equals 4.
 Added NEWS file.
 Migrated vignette to 'vignettes' directory.

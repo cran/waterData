@@ -1,11 +1,11 @@
 #' Function to import daily hydrologic time series 
 #' data given a USGS streamgage identification number.
 #'
-#' This function will import data from a WaterML1 service (current USGS 
+#' This function will import data from a WaterML2 service (current USGS 
 #' hydrological data standard).  It will retrieve daily streamflow and 
 #' continuous water-quality data from the USGS Daily Values Site Web 
-#' Service \url{http://waterservices.usgs.gov/rest/DV-Service.html}
-#' (U.S. Geological Survey, 2012d).
+#' Service \url{https://waterservices.usgs.gov/rest/DV-Service.html}
+#' (U.S. Geological Survey, 2017d).
 #'
 #' @name importDVs
 #' @title Imports daily USGS hydrologic times series data
@@ -13,12 +13,12 @@
 #' usually eight digits long, but can be longer.  Users may search for 
 #' surface-water sites and obtain station identification numbers using the 
 #' USGS Site Web Service, 
-#' \url{http://waterservices.usgs.gov/rest/Site-Service.html} (USGS, 2012e); 
+#' \url{https://waterservices.usgs.gov/rest/Site-Service.html} (USGS, 2017e); 
 #' using the National Water Information System: Mapper, 
-#' \url{http://wdr.water.usgs.gov/nwisgmap/} (U.S. Geological Survey, 2012a); 
+#' \url{https://maps.waterdata.usgs.gov/mapper/index.html} (U.S. Geological Survey, 2017a); 
 #' or using the National Water Information System: Web Interface to daily 
 #' surface-water data, 
-#' \url{http://waterdata.usgs.gov/nwis/dv/?referred_module=sw} 
+#' \url{https://waterdata.usgs.gov/nwis/dv/?referred_module=sw} 
 #' (U.S. Geological Survey, 2012f).  The site identification number needs to 
 #' be entered as a character, that is in quotes, because many USGS 
 #' streamgage numbers begin with zero and the leading zero is necessary.
@@ -26,14 +26,14 @@
 #' used in the USGS computerized data system, National Water 
 #' Information System (NWIS), to uniquely identify a specific hydrologic 
 #' property or constituent.  A list of paramater codes is available at 
-#' \url{http://nwis.waterdata.usgs.gov/usa/nwis/pmcodes} (U.S. Geological Survey, 2012b).
+#' \url{https://nwis.waterdata.usgs.gov/usa/nwis/pmcodes} (U.S. Geological Survey, 2017b).
 #' @param stat is the USGS statistics code, a 5-digit number 
 #' used in the USGS computerized data system, National Water 
 #' Information System (NWIS), to uniquely identify specific statistics, such
 #' as daily mean, daily maximum, and daily minimum.  The default,  
 #' 00003,  is the mean daily value.  A list of statistics codes is available at 
-#' \url{http://nwis.waterdata.usgs.gov/nwis/help/?read_file=stat&format=table} 
-#' (U.S. Geological Survey, 2012c).
+#' \url{https://nwis.waterdata.usgs.gov/nwis/help/?read_file=stat&format=table} 
+#' (U.S. Geological Survey, 2017c).
 #' Not all statistics are available at every gage.
 #' @param sdate is the start date of the time series, in the format 
 #' yyyy-mm-dd, optional.
@@ -44,31 +44,38 @@
 #' parameter code, code, and the statistics code, stat, are attributes of the
 #' data frame.
 #' @references 
-#' U.S. Geological Survey, 2012a, National Water Information System: Mapper, 
-#' accessed September 7, 2012, at 
-#' \url{http://wdr.water.usgs.gov/nwisgmap/}.
+#' U.S. Geological Survey, 2017a, National Water Information System: Mapper, 
+#' accessed January 3, 2017, at 
+#' \url{https://maps.waterdata.usgs.gov/mapper/index.html}.
 #' 
-#' U.S. Geological Survey, 2012b, Parameter code definition, 
-#' National Water Information System: Web Interface, accessed September 7, 
-#' 2012, at \url{http://nwis.waterdata.usgs.gov/usa/nwis/pmcodes}.
+#' U.S. Geological Survey, 2017b, Parameter code definition, 
+#' National Water Information System: Web Interface, accessed January 3, 
+#' 2017, at \url{https://nwis.waterdata.usgs.gov/usa/nwis/pmcodes}.
 #' 
-#' U.S. Geological Survey, 2012c, Stat codes (stat_cd), 
-#' National Water Information System: Web Interface, accessed September 7, 
-#' 2012, at 
-#' \url{http://nwis.waterdata.usgs.gov/nwis/help/?read_file=stat&format=table}.
+#' U.S. Geological Survey, 2017c, Stat codes (stat_cd), 
+#' National Water Information System: Web Interface, accessed January 3, 
+#' 2017, at 
+#' \url{https://nwis.waterdata.usgs.gov/nwis/help/?read_file=stat&format=table}.
 #' 
-#' U.S. Geological Survey, 2012d, USGS daily values site web service: 
-#' REST Web Services, accessed September 7, 2012, at 
-#' \url{http://waterservices.usgs.gov/rest/DV-Service.html}.
+#' U.S. Geological Survey, 2017d, USGS daily values site web service: 
+#' REST Web Services, accessed January 3, 2017, at 
+#' \url{https://waterservices.usgs.gov/rest/DV-Service.html}.
 #' 
-#' U.S. Geological Survey, 2012e, USGS site web service: 
-#' REST Web Services, accessed September 7, 2012, at 
-#' \url{http://waterservices.usgs.gov/rest/Site-Service.html}.
+#' U.S. Geological Survey, 2017e, USGS site web service: 
+#' REST Web Services, accessed January 3, 2017, at 
+#' \url{https://waterservices.usgs.gov/rest/Site-Service.html}.
 #' 
-#' U.S. Geological Survey, 2012f, USGS surface-water daily data for the Nation: 
-#' National Water Information System: Web Interface, accessed September 7, 
-#' 2012, at \url{http://waterdata.usgs.gov/nwis/dv/?referred_module=sw}.
+#' U.S. Geological Survey, 2017f, USGS surface-water daily data for the Nation: 
+#' National Water Information System: Web Interface, accessed January 3, 
+#' 2017, at \url{http://waterdata.usgs.gov/nwis/dv/?referred_module=sw}.
 #' @keywords ts IO
+#' @importFrom xml2 read_xml
+#' @importFrom xml2 xml_find_all
+#' @importFrom xml2 xml_find_first
+#' @importFrom xml2 xml_text
+#' @importFrom xml2 xml_attr
+#' @importFrom lubridate parse_date_time
+#' @importFrom dataRetrieval getWebServiceData
 #' @export
 #' @format The returned data frame has the following columns \cr
 #' \tabular{lll}{
@@ -103,64 +110,54 @@ importDVs <- function(staid, code="00060", stat="00003", sdate="1851-01-01",
                       edate=as.Date(Sys.Date(), format="%Y-%m-%d")) {
   if (is.character(staid) == FALSE ) stop("staid needs to have quotes around it")
   if (nchar(staid) < 8) stop ("staid must be at least 8 characters")
-  base_url <- "http://waterservices.usgs.gov/nwis/dv?"
-  url <- paste(base_url, "site=", staid, "&parameterCd=", code, "&statCd=", 
+  base_url <- "https://waterservices.usgs.gov/nwis/dv/?format=waterml,2.0"
+  url <- paste(base_url, "&site=", staid, "&parameterCd=", code, "&statCd=", 
                stat, sep = "")
   url <- paste(url, "&startDt=", sdate, "&endDt=", edate, sep="")
-  doc <- xmlTreeParse(url, getDTD = FALSE, useInternalNodes=TRUE)
-  # Get everything in the main (root) element:
-  r <- xmlRoot(doc)
-  # Put all the measured values in a vector
-  i <- 1
-  val <- vector(mode="numeric", length=1)
-  while (xmlName(r[[2]][[3]][[i]])=="value") {
-    val[i] <- as.numeric(xmlValue(r[[2]][[3]][[i]]))
-	  i <- i + 1
+  
+  # modified from importWaterML2 function of package dataRetrieval version 2.6.3
+  asDateTime <- TRUE
+  raw <- FALSE
+  if (class(url) == "character" && file.exists(url)) {
+    returnedDoc <- read_xml(url)
+  } else if(class(url) == 'raw') {
+    returnedDoc <- read_xml(url)
+    raw <- TRUE
+  } else {
+    returnedDoc <- xml_root(getWebServiceData(url, encoding = 'gzip'))
   }
+  
+  timeSeries <- xml_find_all(returnedDoc, "//wml2:Collection") # each parameter/site combo
+  
+  if (0 == length(timeSeries)) {
+    df <- data.frame()
+    if (!raw) {
+      attr(df, "url") <- url
+    }
+    return(df)
+  }
+  
+  TVP <- xml_find_all(timeSeries, ".//wml2:MeasurementTVP") #time-value pairs
+  time <- xml_text(xml_find_all(TVP, ".//wml2:time"))
 
-  # Put all of the attributes in a Attribute list (there are 2 attributes, 
-  # qualifiers and dateTime)
-  Attribute <- xmlApply(r[[2]][[3]], xmlAttrs)
- 
-  # Get the number of data values
-  N <- length(val)
+  if (asDateTime) {
+    time <- parse_date_time(time, c("%Y","%Y-%m-%d","%Y-%m-%dT%H:%M","%Y-%m-%dT%H:%M:%S",
+                                    "%Y-%m-%dT%H:%M:%OS","%Y-%m-%dT%H:%M:%OS%z"), 
+                            exact = TRUE)
+  }
+  
+  values <- as.numeric(xml_text(xml_find_all(TVP, ".//wml2:value")))
 
-  # Get the default NoDataValue
-  NoDataValue <- xmlValue(r[["timeSeries"]][["variable"]][["NoDataValue"]])
-  NoDataValue <- as.integer(NoDataValue)
-  dates <- vector(mode="character", length=1)
-  qualcode <- vector(mode="character", length=1)
-  if ( N > 1 ) { 
-  for (z in 1:N) {
-	  dates[z] <- as.character(strsplit(Attribute[z][[1]][[2]], "T")[[1]][1])
-    qualcode[z] <- Attribute[z][[1]][[1]]
-  }
-  dates <- as.Date(dates, "%Y-%m-%d")
-  df <- data.frame(staid, val, dates, qualcode)
-  beginDate <- df$dates[1]
-  endDate <- df$dates[dim(df)[[1]]]
-  myDates <- as.data.frame(seq.Date(beginDate, endDate, by=1))
-  dimnames(myDates)[[2]][1]<-"dates"
-  ndays<-dim(myDates)[1]
-  nobs<-dim(df)[1]
-  if ( nobs < ndays ) {
-    sitedat<-df
-    fixedData<-merge(myDates, sitedat, all.x=TRUE)
-    fixedData$staid<-sitedat$staid[1]
-    fixedData<-fixedData[,c("staid", "val", "dates", "qualcode")]
-    df<-fixedData 
-  }
-  } 
-  else { 
-    df <- data.frame(staid=character(0), val=numeric(0), dates=character(0), 
-                     qualcode=character(0)) 
-    my.message<-paste("No data returned for site", staid, "parameter code", code, 
-                      "statistics code", stat, sdate, "to", edate, sep=" ")
-    message(my.message)
-  }
-  attributes(df)$code<-code
-  attributes(df)$stat<-stat
-  df
+  idents <- xml_text(xml_find_all(timeSeries, ".//gml:identifier"))
+  idents <- strsplit(idents, "[.]")[[1]][2]
+  useIdents <- rep(idents, length(values))
+
+  tvpQuals <- xml_text(xml_find_first(TVP, ".//swe:value"))
+
+  df <- cbind.data.frame(staid = useIdents, val = values, dates = time, 
+                           qualcode = tvpQuals, stringsAsFactors = FALSE)
+
+  return(df)
 }
 
 #' Function to plot hydrologic times series.  
@@ -182,6 +179,8 @@ importDVs <- function(staid, code="00060", stat="00003", sdate="1851-01-01",
 #' @param ... further arguments to be passed to plotting method (see \link{par}). 
 #' (see \link{xyplot}).
 #' @return a lattice plot 
+#' @importFrom lattice xyplot
+#' @importFrom latticeExtra yscale.components.log10ticks
 #' @export
 #' @examples 
 #' data(exampleWaterData)
@@ -337,54 +336,54 @@ plotParam<-function(data, logscale=FALSE, metric=FALSE, ylabel=NULL, ...) {
 #' is usually eight digits long, but can be longer.  Users may search for 
 #' surface-water sites and obtain station identification numbers using the 
 #' USGS Site Web Service, 
-#' \url{http://waterservices.usgs.gov/rest/Site-Service.html} (U.S. Geological 
-#' Survey, 2012d); using the National Water Information System: Mapper, 
-#' \url{http://wdr.water.usgs.gov/nwisgmap/} (U.S. Geological Survey, 2012a); 
+#' \url{https://waterservices.usgs.gov/rest/Site-Service.html} (U.S. Geological 
+#' Survey, 2017d); using the National Water Information System: Mapper, 
+#' \url{https://maps.waterdata.usgs.gov/mapper/index.html} (U.S. Geological Survey, 2017a); 
 #' or using the National Water Information System: Web Interface to daily 
 #' surface-water data, 
-#' \url{http://waterdata.usgs.gov/nwis/dv/?referred_module=sw} (U.S. 
-#' Geological Survey, 2012e).  The site identification number needs to be 
+#' \url{https://waterdata.usgs.gov/nwis/dv/?referred_module=sw} (U.S. 
+#' Geological Survey, 2017e).  The site identification number needs to be 
 #' entered as a character, that is in quotes, because many USGS streamgage 
 #' numbers begin with zero and the leading zero is necessary.
 #' @param code is the USGS parameter code, a 5-digit number 
 #' used in the USGS computerized data system, National Water 
 #' Information System (NWIS), to uniquely identify a specific hydrologic 
 #' property or constituent.  A list of paramater codes is available at 
-#' \url{http://nwis.waterdata.usgs.gov/usa/nwis/pmcodes} (U.S. Geological 
-#' Survey, 2012b).
+#' \url{https://nwis.waterdata.usgs.gov/usa/nwis/pmcodes} (U.S. Geological 
+#' Survey, 2017b).
 #' @param stat is the USGS statistics code, a 5-digit number 
 #' used in the USGS computerized data system, NWIS, to uniquely identify 
 #' specific statistics, such as daily mean, daily maximum, and daily minimum.  
 #' The default,  00003,  is the mean daily value.  A list of statistics codes 
 #' is available at 
-#' \url{http://nwis.waterdata.usgs.gov/nwis/help/?read_file=stat&format=table} 
-#' (U.S. Geological Survey, 2012c).
+#' \url{https://nwis.waterdata.usgs.gov/nwis/help/?read_file=stat&format=table} 
+#' (U.S. Geological Survey, 2017c).
 #' Not all statistics are available at every gage.
 #' @param sdate is the start date of the time series, in the format yyyy-mm-dd.
 #' @param edate is the end date of the time series, in the format yyyy-mm-dd.
 #' @keywords utilities
 #' @export
 #' @references
-#' U.S. Geological Survey, 2012a, National Water Information System: Mapper, 
-#' accessed September 7, 2012, at 
-#' \url{http://wdr.water.usgs.gov/nwisgmap/}.
+#' U.S. Geological Survey, 2017a, National Water Information System: Mapper, 
+#' accessed January 3, 2017, at 
+#' \url{https://maps.waterdata.usgs.gov/mapper/index.html}.
 #' 
-#' U.S. Geological Survey, 2012b, Parameter code definition, 
-#' National Water Information System: Web Interface, accessed September 7, 
-#' 2012, at \url{http://nwis.waterdata.usgs.gov/usa/nwis/pmcodes}.
+#' U.S. Geological Survey, 2017b, Parameter code definition, 
+#' National Water Information System: Web Interface, accessed January 3, 
+#' 2017, at \url{https://nwis.waterdata.usgs.gov/usa/nwis/pmcodes}.
 #' 
-#' U.S. Geological Survey, 2012c, Stat codes (stat_cd), 
-#' National Water Information System: Web Interface, accessed September 7, 
-#' 2012, at 
-#' \url{http://nwis.waterdata.usgs.gov/nwis/help/?read_file=stat&format=table}.
+#' U.S. Geological Survey, 2017c, Stat codes (stat_cd), 
+#' National Water Information System: Web Interface, accessed January 3, 
+#' 2017, at 
+#' \url{https://nwis.waterdata.usgs.gov/nwis/help/?read_file=stat&format=table}.
 #' 
-#' U.S. Geological Survey, 2012d, USGS site web service: 
-#' REST Web Services, accessed September 7, 2012, at 
-#' \url{http://waterservices.usgs.gov/rest/Site-Service.html}.
+#' U.S. Geological Survey, 2017d, USGS site web service: 
+#' REST Web Services, accessed January 3, 2017, at 
+#' \url{https://waterservices.usgs.gov/rest/Site-Service.html}.
 #' 
-#' U.S. Geological Survey, 2012e, USGS surface-water daily data for the Nation: 
-#' National Water Information System: Web Interface, accessed September 7, 
-#' 2012, at \url{http://waterdata.usgs.gov/nwis/dv/?referred_module=sw}.
+#' U.S. Geological Survey, 2017e, USGS surface-water daily data for the Nation: 
+#' National Water Information System: Web Interface, accessed January 3, 
+#' 2017, at \url{http://waterdata.usgs.gov/nwis/dv/?referred_module=sw}.
 #' @return URL for USGS data
 #' @examples 
 #' tellMeURL("05054000", code="00060", stat="00003", sdate="2000-01-01", 
@@ -393,8 +392,8 @@ tellMeURL <- function(staid, code="00060", stat="00003", sdate="1851-01-01",
                       edate=as.Date(Sys.Date(), format="%Y-%m-%d")) {
   if (is.character(staid) == FALSE ) stop("staid needs to have quotes around it")
   if (nchar(staid) < 8) stop ("staid must be at least 8 characters")
-  base_url <- "http://waterservices.usgs.gov/nwis/dv?"
-  url <- paste(base_url, "site=", staid, "&parameterCd=", code, "&statCd=", 
+  base_url <- "https://waterservices.usgs.gov/nwis/dv/?format=waterml,2.0"
+  url <- paste(base_url, "&site=", staid, "&parameterCd=", code, "&statCd=", 
                stat, sep = "")
   url <- paste(url, "&startDt=", sdate, sep="")
   url <- paste(url, "&endDt=", edate, sep="")
@@ -410,28 +409,34 @@ tellMeURL <- function(staid, code="00060", stat="00003", sdate="1851-01-01",
 #' identification number(s).  USGS site numbers are usually eight digits long, 
 #' but can be longer.  Users may search for surface-water sites and obtain 
 #' station identification numbers using the USGS Site Web Service, 
-#' \url{http://waterservices.usgs.gov/rest/Site-Service.html} (U.S. Geological 
-#' Survey, 2012b); using the National Water Information System: Mapper, 
-#' \url{http://wdr.water.usgs.gov/nwisgmap/} (U.S. Geological Survey, 2012a); 
+#' \url{https://waterservices.usgs.gov/rest/Site-Service.html} (U.S. Geological 
+#' Survey, 2017b); using the National Water Information System: Mapper, 
+#' \url{https://maps.waterdata.usgs.gov/mapper/index.html} (U.S. Geological Survey, 2017a); 
 #' or using the National Water Information System: Web Interface to daily 
 #' surface-water data, 
-#' \url{http://waterdata.usgs.gov/nwis/dv/?referred_module=sw} (U.S. 
-#' Geological Survey, 2012c).  The site identification number needs to be 
+#' \url{https://waterdata.usgs.gov/nwis/dv/?referred_module=sw} (U.S. 
+#' Geological Survey, 2017c).  The site identification number needs to be 
 #' entered as a character, that is in quotes, because many USGS streamgage 
 #' numbers begin with zero and the leading zero is necessary.
 #' @keywords datagen
 #' @references
-#' U.S. Geological Survey, 2012a, National Water Information System: Mapper, 
-#' accessed September 7, 2012, at 
-#' \url{http://wdr.water.usgs.gov/nwisgmap/}.
+#' U.S. Geological Survey, 2017a, National Water Information System: Mapper, 
+#' accessed January 3, 2017, at 
+#' \url{https://maps.waterdata.usgs.gov/mapper/index.html}.
 #' 
-#' U.S. Geological Survey, 2012b, USGS site web service: 
-#' REST Web Services, accessed September 7, 2012, at 
-#' \url{http://waterservices.usgs.gov/rest/Site-Service.html}.
+#' U.S. Geological Survey, 2017b, USGS site web service: 
+#' REST Web Services, accessed January 3, 2017, at 
+#' \url{https://waterservices.usgs.gov/rest/Site-Service.html}.
 #' 
-#' U.S. Geological Survey, 2012c, USGS surface-water daily data for the Nation: 
-#' National Water Information System: Web Interface, accessed September 7, 
-#' 2012, at \url{http://waterdata.usgs.gov/nwis/dv/?referred_module=sw}.
+#' U.S. Geological Survey, 2017c, USGS surface-water daily data for the Nation: 
+#' National Water Information System: Web Interface, accessed January 3, 2017, 
+#' at \url{https://waterdata.usgs.gov/nwis/dv/?referred_module=sw}.
+#' @importFrom xml2 read_xml
+#' @importFrom xml2 xml_find_all
+#' @importFrom xml2 xml_root
+#' @importFrom xml2 xml_children
+#' @importFrom xml2 xml_attr
+#' @importFrom dataRetrieval getWebServiceData
 #' @export
 #' @return a data frame containing the station identification number(s), the 
 #' USGS streamgage name(s), the decimal latitude(s), and decimal longitude(s).
@@ -451,44 +456,50 @@ tellMeURL <- function(staid, code="00060", stat="00003", sdate="1851-01-01",
 #' staInfo <- siteInfo(c("05054000", "05082500", "06342500"))
 #' staInfo
 #' # a list with an invalid station identification number
-#' staInfo <- siteInfo(c("05054000", "05082500", "06342501"))
-siteInfo<-function(staid) {
-  staname <- vector(mode="character", length=0)
-  lat <- vector(mode="numeric", length=0)
-  lng <- vector(mode="numeric", length=0)
-  for ( i in 1:length(staid) ) {
+#' staInfo <- siteInfo(c("05054000", "05082500", "0642501"))
+siteInfo <- function(staid) {
+  retVal <- NULL
+  for (i in 1:length(staid)) {
     if (is.character(staid[i]) == FALSE ) stop("staid needs to have quotes 
                                                around it")
     if (nchar(staid[i]) < 8) stop ("staid must be at least 8 characters")
-    base_url <-"http://waterservices.usgs.gov/nwis/site?format=mapper&sites="
-    url <- paste(base_url,staid[i],
+    
+    base_url <-"https://waterservices.usgs.gov/nwis/site?format=mapper&sites="
+    url <- paste(base_url, staid[i],
                  "&siteOutput=expanded&seriesCatalogOutput=true&outputDataTypeCd=all", 
                  sep = "")
-    my.er<- FALSE
-    doc <- try(xmlTreeParse(url, getDTD = FALSE, useInternalNodes=TRUE), 
-               silent=TRUE)
-    if ( class(doc)[1]=="try-error") {
-      message("Unable to retrieve XML for site ", staid[i], ". Check site id.")
-      staname[i] <- "Unable to retrieve"
-      lat[i] <- ""
-      lng[i] <- ""
-      next
+    
+    if (class(url) == "character" && file.exists(url)) {
+      returnedDoc <- read_xml(url)
+    } else if(class(url) == 'raw') {
+      returnedDoc <- read_xml(url)
+      raw <- TRUE
+    } else {
+      returnedDoc <- xml_root(getWebServiceData(url, encoding = 'gzip'))
     }
-    else {    
-      # Get everything in the main ('root') element:
-      r <- xmlRoot(doc)
-      r.attrs <- xmlApply(r[[1]], xmlAttrs)
-      staname[i] <- r.attrs$site["sna"]
-      lat[i] <- r.attrs$site["lat"]
-      lng[i] <- r.attrs$site["lng"]
+    
+    siteDat <- xml_find_all(returnedDoc, "//site") # each parameter/site combo
+
+    doc <- xml_root(siteDat)
+    siteCategories <- xml_children(doc)
+  
+    for (sc in siteCategories) {
+      sites <- xml_children(sc)
+      singlestaid <- xml_attr(sites, "sno")
+      staname <- xml_attr(sites, "sna")
+      lat <- as.numeric(xml_attr(sites, "lat"))
+      lng <- as.numeric(xml_attr(sites, "lng"))
+
+      df <- data.frame(staid=singlestaid, staname, lat, lng, stringsAsFactors = FALSE) 
+      
+      if (is.null(retVal)) {
+        retVal <- df
+      } else {
+        retVal <- rbind.data.frame(retVal, df)
+      }
     }
   }
-  df <- data.frame(cbind(staid=staid, staname=staname, lat=lat, lng=lng), 
-                   stringsAsFactors=FALSE)
-  df$staname <- as.character(df$staname)
-  df$lat <- as.numeric(lat)
-  df$lng <- as.numeric(lng)
-  df
+  retVal
 }
 
 #' Function that returns USGS Site Information Service URL for troubleshooting or 
@@ -500,37 +511,37 @@ siteInfo<-function(staid) {
 #' is usually eight digits long, but can be longer.  Users may search for 
 #' surface-water sites and obtain station identification numbers using the 
 #' USGS Site Web Service, 
-#' \url{http://waterservices.usgs.gov/rest/Site-Service.html} (U.S. Geological 
-#' Survey, 2012b); using the National Water Information System: Mapper, 
-#' \url{http://wdr.water.usgs.gov/nwisgmap/} (U.S. Geological Survey, 2012a); 
+#' \url{https://waterservices.usgs.gov/rest/Site-Service.html} (U.S. Geological 
+#' Survey, 2017b); using the National Water Information System: Mapper, 
+#' \url{https://maps.waterdata.usgs.gov/mapper/index.html} (U.S. Geological Survey, 2017a); 
 #' or using the National Water Information System: Web Interface to daily 
 #' surface-water data, 
-#' \url{http://waterdata.usgs.gov/nwis/dv/?referred_module=sw} (U.S. 
-#' Geological Survey, 2012c).  The site identification number needs to be 
+#' \url{https://waterdata.usgs.gov/nwis/dv/?referred_module=sw} (U.S. 
+#' Geological Survey, 2017c).  The site identification number needs to be 
 #' entered as a character, that is in quotes, because many USGS streamgage 
 #' numbers begin with zero and the leading zero is necessary.
 #' @keywords utilities
 #' @return URL for USGS site information
 #' @export
 #' @references
-#' U.S. Geological Survey, 2012a, National Water Information System: Mapper, 
-#' accessed September 7, 2012, at 
-#' \url{http://wdr.water.usgs.gov/nwisgmap/}.
+#' U.S. Geological Survey, 2017a, National Water Information System: Mapper, 
+#' accessed January 3, 2017, at 
+#' \url{https://maps.waterdata.usgs.gov/mapper/index.html}.
 #' 
-#' U.S. Geological Survey, 2012b, USGS site web service: 
-#' REST Web Services, accessed September 7, 2012, at 
-#' \url{http://waterservices.usgs.gov/rest/Site-Service.html}.
+#' U.S. Geological Survey, 2017b, USGS site web service: 
+#' REST Web Services, accessed January 3, 2017, at 
+#' \url{https://waterservices.usgs.gov/rest/Site-Service.html}.
 #' 
-#' U.S. Geological Survey, 2012c, USGS surface-water daily data for the Nation: 
-#' National Water Information System: Web Interface, accessed September 7, 
-#' 2012, at \url{http://waterdata.usgs.gov/nwis/dv/?referred_module=sw}.
+#' U.S. Geological Survey, 2017c, USGS surface-water daily data for the Nation: 
+#' National Water Information System: Web Interface, accessed January 3, 2017, 
+#' at \url{https://waterdata.usgs.gov/nwis/dv/?referred_module=sw}.
 #' @examples 
 #' tellMeSiteURL("05054000")
 tellMeSiteURL <- function(staid) {
 if (is.character(staid) == FALSE ) stop("Station number needs to have quotes around it")
   if (nchar(staid) < 8) stop ("Station number must be at least 8 characters")
-  base_url <-"http://waterservices.usgs.gov/nwis/site?format=mapper&sites="
-  url <- paste(base_url,staid,
+  base_url <- "https://waterservices.usgs.gov/nwis/site?format=mapper&site="
+  url <- paste(base_url, staid,
                "&siteOutput=expanded&seriesCatalogOutput=true&outputDataTypeCd=all", 
                sep = "")
   url
