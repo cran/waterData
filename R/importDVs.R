@@ -156,7 +156,8 @@ importDVs <- function(staid, code="00060", stat="00003", sdate="1851-01-01",
 
   df <- cbind.data.frame(staid = useIdents, val = values, dates = time, 
                            qualcode = tvpQuals, stringsAsFactors = FALSE)
-
+  attributes(df)$code<-code
+  attributes(df)$stat<-stat
   return(df)
 }
 
@@ -165,7 +166,7 @@ importDVs <- function(staid, code="00060", stat="00003", sdate="1851-01-01",
 #'
 #' @name plotParam
 #' @title Plot Streamflow and Continous Water-Quality Data
-#' @param data is the data frame in the foramt of that returned by 
+#' @param data is the data frame in the format of that returned by 
 #' \link{importDVs}.
 #' @param metric USGS streamflow data are usually in cubic feet per second;   
 #' however it may be converted to cubic meters per second for publication.  
@@ -457,7 +458,8 @@ tellMeURL <- function(staid, code="00060", stat="00003", sdate="1851-01-01",
 #' staInfo
 #' # a list with an invalid station identification number
 #' staInfo <- siteInfo(c("05054000", "05082500", "0642501"))
-siteInfo <- function(staid) {
+siteInfo<-function(staid) {
+  # modified from whatNWISsites function of package dataRetrieval version 2.6.3
   retVal <- NULL
   for (i in 1:length(staid)) {
     if (is.character(staid[i]) == FALSE ) stop("staid needs to have quotes 
@@ -540,7 +542,7 @@ siteInfo <- function(staid) {
 tellMeSiteURL <- function(staid) {
 if (is.character(staid) == FALSE ) stop("Station number needs to have quotes around it")
   if (nchar(staid) < 8) stop ("Station number must be at least 8 characters")
-  base_url <- "https://waterservices.usgs.gov/nwis/site?format=mapper&site="
+  base_url <-"https://waterservices.usgs.gov/nwis/site?format=mapper&sites="
   url <- paste(base_url, staid,
                "&siteOutput=expanded&seriesCatalogOutput=true&outputDataTypeCd=all", 
                sep = "")

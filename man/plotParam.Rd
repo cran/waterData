@@ -7,7 +7,7 @@
 plotParam(data, logscale = FALSE, metric = FALSE, ylabel = NULL, ...)
 }
 \arguments{
-\item{data}{is the data frame in the foramt of that returned by 
+\item{data}{is the data frame in the format of that returned by 
 \link{importDVs}.}
 
 \item{logscale}{is a logical indicating whether or not the y-scale should be 

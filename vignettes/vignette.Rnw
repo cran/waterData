@@ -228,7 +228,7 @@ map.axes()
 One may also print the URL used by \textit{siteInfo} to retrieve the site information.
 
 <<results=verbatim,echo=TRUE>>=
-siteInfoURL <- tellMeSiteURL("05054000")
+siteInfoURL <- tellMeSiteURL(c("05054000"))
 @
 The object ``siteInfoURL'' is now a character vector containing the following URL:\\
 <<results=tex, echo=FALSE>>=
