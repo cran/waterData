@@ -21,8 +21,8 @@ Sullivan and others (2009), Vecchia (2005), and Vecchia and others (2008).
 \tabular{ll}{
 Package: \tab waterData\cr
 Type: \tab Package\cr
-Version: \tab 1.0.7\cr
-Date: \tab 2017-04-21\cr
+Version: \tab 1.0.8\cr
+Date: \tab 2017-04-28\cr
 License: \tab Unlimited | file LICENSE \cr
 LazyLoad: \tab yes\cr
 }
